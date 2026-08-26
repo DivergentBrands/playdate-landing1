@@ -186,15 +186,8 @@
     max-width: 1120px;
     margin: 0 auto;
   }
-  .wordmark {
-    font-family: var(--font-display);
-    font-size: 1.6rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-  }
-  .wordmark .play { color: var(--clay); }
-  .wordmark .date { color: var(--sage); }
-  .wordmark sup { font-family: var(--font-utility); font-size: 0.5em; font-weight: 600; color: var(--ink-soft); }
+  .wordmark { height: 28px; display: block; }
+  .foot-wordmark { height: 34px; margin: 0 auto 16px; }
   .header-cta { display: none; }
   @media (min-width: 640px) {
     .header-cta { display: inline-flex; padding: 12px 22px; font-size: 0.85rem; }
@@ -211,15 +204,15 @@
   }
   .badge {
     display: inline-block;
-    background: var(--clay);
+    background: var(--sage);
     color: var(--white);
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 7px 16px;
+    padding: 12px 26px;
     border-radius: var(--radius-pill);
-    margin-bottom: 16px;
+    margin-bottom: 18px;
   }
   .hero h1 {
     font-size: clamp(1.9rem, 4.6vw, 2.7rem);
@@ -232,10 +225,15 @@
     margin-bottom: 22px;
   }
   .trust-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px 22px;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 22px;
+    row-gap: 14px;
+    justify-content: start;
     margin-bottom: 22px;
+  }
+  @media (min-width: 460px) {
+    .trust-row { grid-template-columns: repeat(3, auto); }
   }
   .trust-row li {
     list-style: none;
@@ -557,7 +555,6 @@
 
   /* ---------- Footer ---------- */
   footer.site { background: var(--sand); padding: 44px 0 100px; text-align: center; }
-  .foot-wordmark { font-size: 1.5rem; margin-bottom: 16px; }
   .tag-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 22px; }
   .tag-chip {
     font-size: 0.7rem;
@@ -603,7 +600,7 @@
 
 <header class="site">
   <div class="site-header-inner">
-    <span class="wordmark"><span class="play">play</span><span class="date">date</span><sup>TM</sup></span>
+    <img class="wordmark" src="images/playdate-logo.svg" alt="Playdate">
     <a href="#signup" class="btn header-cta">Reserve My Spot</a>
   </div>
 </header>
@@ -615,15 +612,17 @@
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="badge">Founding 100</span>
-          <h1>For parents who read <span class="accent">the ingredient label.</span></h1>
-          <p class="hero-sub">Playdate is a water based hypochlorous acid spray for baby and kids. Three simple ingredients, nothing to sting, nothing to decode. Join the first 100 founding customers and help shape the product before launch.</p>
+          <span class="badge">Hypochlorous Acid Spray for Baby &amp; Kids</span>
+          <h1>For moms who read <span class="accent">the ingredient label.</span></h1>
+          <p class="hero-sub">Three simple ingredients. Nothing to sting, nothing to decode. Playdate is a gentle, water-based hand cleanser made for the softest skin - and the parents who check every label first.</p>
 
           <ul class="trust-row">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol Free</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Non Toxic</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Dermatologically Tested</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Water Based</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Hypoallergenic</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Suitable for Sensitive Skin</li>
           </ul>
 
           <div class="offer-box">
@@ -738,7 +737,7 @@
     <div class="wrap">
       <div class="split reverse">
         <div class="split-media">
-          <img src="images/bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
+          <img src="images/playdate-8oz-bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
         </div>
         <div class="split-copy">
           <span class="eyebrow">Full transparency</span>
@@ -791,7 +790,7 @@
       <div class="founder-grid">
         <span class="eyebrow">Our why</span>
         <blockquote>"Every other bottle on the shelf shouts about germs. We wanted to make the one gentle thing you reach for a dozen times a day without a second thought, because we read the label too."</blockquote>
-        <cite>The Playdate Founders, Divergent Brands LLC</cite>
+        <cite>Sarah, The Playdate Founder</cite>
 
         <div class="why-grid">
           <div class="why-card">
@@ -858,7 +857,7 @@
 
       <div class="signup-grid">
         <div class="signup-bottle">
-          <img src="images/bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
+          <img src="images/playdate-8oz-bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
         </div>
 
         <form class="signup-form" id="signupForm" action="/contact#ContactFooter" method="post" accept-charset="UTF-8">
@@ -927,7 +926,7 @@
 
 <footer class="site">
   <div class="wrap">
-    <div class="foot-wordmark wordmark"><span class="play">play</span><span class="date">date</span><sup>TM</sup></div>
+    <img class="wordmark foot-wordmark" src="images/playdate-logo.svg" alt="Playdate">
     <div class="tag-chips">
       <span class="tag-chip">#GENTLE</span>
       <span class="tag-chip">#ALCOHOL-FREE</span>
