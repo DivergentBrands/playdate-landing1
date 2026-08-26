@@ -1,0 +1,904 @@
+<!--
+  Playdate™ — Founding 100 Landing Page
+  ----------------------------------------------------------------
+  DEPLOY NOTE: The signup form below posts to Shopify's native
+  customer/contact endpoint (action="/contact#ContactFooter").
+  This resolves automatically once this file is uploaded as a
+  Shopify page (Online Store > Pages > Add page > "Show HTML").
+  Submissions will land in Shopify Admin > Customers, tagged
+  "founding-100". No app or backend needed. Until then, the form
+  will show a client-side success state but won't actually reach
+  Shopify (there's nothing to post to on a non-Shopify domain).
+
+  To update the "spots remaining" counter, edit SPOTS_CLAIMED near
+  the top of the <script> at the bottom of this file.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playdate™ — Founding 100 | Nature's Gentlest Clean for Little Hands</title>
+<meta name="description" content="A water-based hypochlorous acid spray for baby & kids. Join the first 100 founding customers at $12.99 (reg. $19.99).">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --clay:        #C4856A;
+    --clay-deep:   #9C5A43;
+    --sage:        #8AAB8E;
+    --sage-deep:   #6E9174;
+
+    --cream:       #FDF6F0;
+    --blush:       #FBEDE7;
+    --sand:        #F6E9DF;
+    --ink:         #3F3A34;
+    --ink-soft:    #8B7F74;
+    --hairline:    rgba(63,58,52,0.12);
+
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-utility: 'Montserrat', system-ui, -apple-system, sans-serif;
+
+    --radius-card: 22px;
+    --radius-pill: 100px;
+
+    --shadow-soft: 0 12px 30px rgba(156, 90, 67, 0.10);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-utility);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; }
+  button { font-family: inherit; }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--clay-deep);
+    margin: 0 0 0.4em;
+    line-height: 1.08;
+    font-weight: 600;
+  }
+
+  .eyebrow {
+    font-family: var(--font-utility);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    color: var(--sage-deep);
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+    border-radius: var(--radius-pill);
+    background: var(--sage);
+    color: var(--cream);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 32px;
+    border-radius: var(--radius-pill);
+    background: var(--clay);
+    color: var(--cream);
+    font-weight: 700;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    box-shadow: var(--shadow-soft);
+  }
+  .btn:hover { background: var(--clay-deep); transform: translateY(-1px); }
+  .btn:focus-visible { outline: 3px solid var(--sage-deep); outline-offset: 2px; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--clay-deep);
+    box-shadow: none;
+    border: 1.5px solid var(--clay);
+  }
+  .btn-ghost:hover { background: var(--blush); }
+  .btn[disabled] { opacity: 0.65; cursor: not-allowed; transform: none; }
+
+  section { padding: 72px 0; }
+  .section-tight { padding: 56px 0; }
+
+  /* ---------- Header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(253, 246, 240, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .site-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .wordmark .play { color: var(--clay); }
+  .wordmark .date { color: var(--sage); }
+  .wordmark sup { font-family: var(--font-utility); font-size: 0.55em; font-weight: 600; color: var(--ink-soft); }
+  .header-cta { display: none; }
+  @media (min-width: 640px) {
+    .header-cta { display: inline-flex; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 40px 0 56px;
+    overflow: hidden;
+  }
+  .hero-art {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-card);
+    background: linear-gradient(160deg, var(--blush), var(--sand));
+    margin-bottom: 32px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+  }
+  .hero-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+  }
+  @media (min-width: 640px) {
+    .hero-art { aspect-ratio: 16 / 9; }
+  }
+
+  .hero-copy { text-align: center; }
+  .hero h1 {
+    font-size: clamp(2.1rem, 7vw, 3.2rem);
+    margin-bottom: 0.5em;
+  }
+  .hero h1 em { font-style: italic; color: var(--clay); }
+  .hero-sub {
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    max-width: 46ch;
+    margin: 0 auto 24px;
+  }
+  .price-callout {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    background: var(--cream);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    padding: 10px 22px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow-soft);
+  }
+  .price-was { text-decoration: line-through; color: var(--ink-soft); font-size: 1rem; }
+  .price-now { font-family: var(--font-display); font-weight: 700; font-size: 1.6rem; color: var(--clay-deep); }
+  .price-tag { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage-deep); font-weight: 700; }
+
+  .hero-actions { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .hero-note { font-size: 0.8rem; color: var(--ink-soft); }
+
+  /* ---------- Trust bar ---------- */
+  .trust-bar {
+    background: var(--clay-deep);
+    padding: 20px 0;
+  }
+  .trust-bar ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 28px;
+  }
+  .trust-bar li {
+    color: var(--cream);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .trust-bar li::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+  }
+
+  /* ---------- Bubble story ---------- */
+  .story { background: var(--blush); }
+  .story-head { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+  .bubbles {
+    display: grid;
+    gap: 20px;
+  }
+  @media (min-width: 760px) {
+    .bubbles { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  }
+  .bubble {
+    background: var(--cream);
+    border-radius: var(--radius-card);
+    padding: 30px 26px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+  }
+  .bubble .icon-circle { margin: 0 auto 16px; }
+  .bubble h3 { font-size: 1.3rem; margin-bottom: 0.3em; }
+  .bubble p { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
+
+  .icon-circle {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon-circle svg { width: 30px; height: 30px; }
+  .icon-clay { color: var(--clay); }
+  .icon-sage { color: var(--sage-deep); }
+
+  /* ---------- Ingredient block ---------- */
+  .ingredients {
+    background: var(--sand);
+    border-radius: var(--radius-card);
+    padding: 44px 32px;
+    display: grid;
+    gap: 32px;
+    align-items: center;
+    text-align: center;
+  }
+  @media (min-width: 760px) {
+    .ingredients { grid-template-columns: auto 1fr; text-align: left; padding: 52px 56px; }
+  }
+  .zero-callout {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--clay-deep);
+    font-size: 4.2rem;
+    line-height: 1;
+  }
+  .zero-callout span { display: block; font-family: var(--font-utility); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-deep); margin-top: 8px; }
+  .ing-list {
+    list-style: none;
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .ing-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--hairline);
+    padding-bottom: 10px;
+  }
+  .ing-list li b { font-family: var(--font-display); font-size: 1.15rem; color: var(--clay-deep); }
+
+  /* ---------- Benefit cards ---------- */
+  .benefits { background: var(--sage); }
+  .benefits .section-head { text-align: center; color: var(--cream); max-width: 640px; margin: 0 auto 36px; }
+  .benefits .section-head h2 { color: var(--cream); }
+  .benefits .section-head p { color: rgba(253,246,240,0.85); }
+  .benefit-grid {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 620px) {
+    .benefit-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .benefit-card {
+    background: var(--cream);
+    border-radius: var(--radius-card);
+    padding: 26px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .benefit-card h3 { font-size: 1.1rem; margin-bottom: 0.25em; }
+  .benefit-card p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
+  .benefit-card .icon-circle { flex-shrink: 0; width: 48px; height: 48px; }
+  .benefit-card .icon-circle svg { width: 22px; height: 22px; }
+
+  /* ---------- Multi-use icon row ---------- */
+  .multiuse { text-align: center; }
+  .multiuse-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin-top: 36px;
+  }
+  @media (min-width: 620px) {
+    .multiuse-row { grid-template-columns: repeat(4, 1fr); }
+  }
+  .multiuse-item .icon-circle { margin: 0 auto 12px; width: 72px; height: 72px; }
+  .multiuse-item .icon-circle svg { width: 32px; height: 32px; }
+  .multiuse-item span { font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+
+  /* ---------- Founder note ---------- */
+  .founder { background: var(--blush); text-align: center; }
+  .founder blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+    color: var(--clay-deep);
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.4;
+  }
+  .founder cite { font-style: normal; font-size: 0.85rem; color: var(--ink-soft); letter-spacing: 0.04em; }
+
+  /* ---------- Signup ---------- */
+  .signup { background: var(--clay); color: var(--cream); text-align: center; }
+  .signup h2 { color: var(--cream); }
+  .signup-sub { color: rgba(253,246,240,0.9); max-width: 50ch; margin: 0 auto 24px; }
+  .spots-bar-wrap {
+    max-width: 420px;
+    margin: 0 auto 28px;
+  }
+  .spots-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    color: rgba(253,246,240,0.9);
+  }
+  .spots-track {
+    height: 10px;
+    border-radius: var(--radius-pill);
+    background: rgba(253,246,240,0.25);
+    overflow: hidden;
+  }
+  .spots-fill {
+    height: 100%;
+    background: var(--sage);
+    border-radius: var(--radius-pill);
+  }
+
+  .signup-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 32px;
+    align-items: center;
+    justify-items: center;
+  }
+  @media (min-width: 760px) {
+    .signup-grid { grid-template-columns: 280px 1fr; justify-items: stretch; text-align: left; }
+  }
+  .signup-bottle {
+    max-width: 220px;
+  }
+  @media (min-width: 760px) {
+    .signup-bottle { max-width: 100%; }
+  }
+  .signup-bottle img {
+    width: 100%;
+    border-radius: var(--radius-card);
+    box-shadow: 0 20px 40px rgba(63,58,52,0.22);
+  }
+  .signup-form {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--cream);
+    border-radius: var(--radius-card);
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(63,58,52,0.18);
+    text-align: left;
+  }
+  .signup-form .field { margin-bottom: 14px; }
+  .signup-form label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+  .signup-form input {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: 14px;
+    border: 1.5px solid var(--hairline);
+    background: var(--cream);
+    font-family: var(--font-utility);
+    font-size: 1rem;
+    color: var(--ink);
+  }
+  .signup-form input:focus {
+    outline: none;
+    border-color: var(--sage);
+  }
+  .signup-form .btn { width: 100%; margin-top: 6px; }
+  .form-fine {
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    margin-top: 12px;
+    text-align: center;
+  }
+  .form-success, .form-error { display: none; text-align: center; padding: 8px 0; }
+  .form-success.show, .form-error.show { display: block; }
+  .form-success h3 { color: var(--sage-deep); margin-bottom: 4px; }
+  .form-error p { color: var(--clay-deep); font-weight: 600; font-size: 0.9rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item {
+    border-bottom: 1px solid var(--hairline);
+  }
+  .faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 20px 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--clay-deep);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item .plus {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--clay);
+    color: var(--clay);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] .plus { transform: rotate(45deg); }
+  .faq-item p {
+    margin: 0 0 20px 4px;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    max-width: 60ch;
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site {
+    background: var(--sand);
+    padding: 48px 0 100px;
+    text-align: center;
+  }
+  .foot-wordmark { font-size: 1.5rem; margin-bottom: 16px; }
+  .tag-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .tag-chip {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: var(--cream);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    padding: 7px 16px;
+    color: var(--sage-deep);
+  }
+  .disclaimer {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .sticky-cta {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 50;
+    background: var(--cream);
+    border-top: 1px solid var(--hairline);
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(120%);
+    transition: transform 0.25s ease;
+    box-shadow: 0 -8px 24px rgba(63,58,52,0.10);
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta .btn { width: 100%; max-width: 420px; }
+  @media (min-width: 900px) { .sticky-cta { display: none; } }
+
+  .visually-hidden {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-header-inner">
+    <span class="wordmark"><span class="play">play</span><span class="date">date</span><sup>™</sup></span>
+    <a href="#signup" class="btn header-cta">Reserve my spot</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-art">
+        <img src="images/hero.jpg" alt="A mom laughing with her toddler outdoors, misting Playdate hand cleanser onto the child's hands." loading="eager" fetchpriority="high">
+      </div>
+      <div class="hero-copy">
+        <span class="pill">Hypochlorous Acid Spray · Baby &amp; Kids</span>
+        <h1 style="margin-top:18px;">For moms <em>who read</em><br>the ingredient label.</h1>
+        <p class="hero-sub">Three simple ingredients. Nothing to sting, nothing to decode. Playdate™ is a gentle, water-based hand cleanser made for the softest skin — and the parents who check every label first.</p>
+        <div class="price-callout">
+          <span class="price-was">$19.99</span>
+          <span class="price-now">$12.99</span>
+          <span class="price-tag">Founding 100 price</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#signup" class="btn">Claim my founding spot</a>
+          <span class="hero-note">Only 100 spots available · 8 fl oz bottle</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST BAR ================= -->
+  <div class="trust-bar">
+    <div class="wrap">
+      <ul>
+        <li>Alcohol-Free</li>
+        <li>Non-Toxic</li>
+        <li>Dermatologically Tested</li>
+        <li>Water-Based</li>
+        <li>Sensitive Skin Safe</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ================= STORY BUBBLES ================= -->
+  <section class="story">
+    <div class="wrap">
+      <div class="story-head">
+        <span class="eyebrow">Get to know Playdate</span>
+        <h2 style="margin-top:8px;">A different kind of clean.</h2>
+      </div>
+      <div class="bubbles">
+        <div class="bubble">
+          <div class="icon-circle icon-clay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M8 12c-2.5 1-4 3-4 6" stroke-linecap="round"/><path d="M16 12c2.5 1 4 3 4 6" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Gentle, always</h3>
+          <p>No sting, no fear. A soft mist that's kind to little hands and softer skin — every time you reach for it.</p>
+        </div>
+        <div class="bubble">
+          <div class="icon-circle icon-sage">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16" stroke-linecap="round"/><path d="M4 6h10M4 18h13" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Nothing to decode</h3>
+          <p>Three ingredients. That's the whole list. Read the back of the bottle in five seconds flat.</p>
+        </div>
+        <div class="bubble">
+          <div class="icon-circle icon-clay">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="6" height="6" rx="1.4"/><circle cx="16" cy="8" r="3"/><path d="M6 19c0-3 3-5 6-5s6 2 6 5" stroke-linecap="round"/></svg>
+          </div>
+          <h3>One bottle, everywhere</h3>
+          <p>Hands, faces, toys, high chairs, the diaper bag. One gentle formula for the whole day out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INGREDIENT TRANSPARENCY ================= -->
+  <section>
+    <div class="wrap">
+      <div class="ingredients">
+        <div class="zero-callout">0%<span>Alcohol</span></div>
+        <div>
+          <span class="eyebrow">The whole list</span>
+          <h2 style="margin-top:8px;">Three ingredients. That's it.</h2>
+          <ul class="ing-list">
+            <li><b>Water</b> — purified, the base of everything.</li>
+            <li><b>Hypochlorous Acid (HOCl)</b> — the same gentle molecule your own white blood cells make.</li>
+            <li><b>Salt</b> — that's genuinely the whole formula.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= BENEFITS ================= -->
+  <section class="benefits">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="color:rgba(253,246,240,0.85);">Why parents switch</span>
+        <h2 style="margin-top:8px;">Made for the parts other cleansers get wrong.</h2>
+      </div>
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="icon-circle icon-clay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15c3-6 13-6 16 0" stroke-linecap="round"/><path d="M12 15v4" stroke-linecap="round"/></svg></div>
+          <div><h3>No bleach smell</h3><p>A light, clean scent from hypochlorous acid's natural chemistry — not a harsh chemical cloud.</p></div>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-circle icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 4c4 4 6 7 6 10a6 6 0 1 1-12 0c0-3 2-6 6-10Z"/></svg></div>
+          <div><h3>Won't leak in the diaper bag</h3><p>A trigger sprayer built to travel — toss it in the bag and go.</p></div>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-circle icon-clay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="7"/><path d="M12 8.5v3.8l2.6 1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><h3>Kind to the softest skin</h3><p>Dermatologically tested and hypoallergenic — no sting, no drama at cleanup time.</p></div>
+        </div>
+        <div class="benefit-card">
+          <div class="icon-circle icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 8h14M5 12h14M5 16h9" stroke-linecap="round"/></svg></div>
+          <div><h3>Nothing to decode</h3><p>Three ingredients you can actually pronounce — read the whole label before you check out at the aisle.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MULTI-USE ================= -->
+  <section class="multiuse">
+    <div class="wrap">
+      <span class="eyebrow">One bottle does it all</span>
+      <h2 style="margin-top:8px;">Wherever little hands go.</h2>
+      <div class="multiuse-row">
+        <div class="multiuse-item">
+          <div class="icon-circle icon-clay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 11V6a2 2 0 1 1 4 0v5M11 10V5a2 2 0 1 1 4 0v6M15 11V7a2 2 0 1 1 4 0v6c0 4-2 7-6 7s-6-2-7-5l-1.5-3a1.6 1.6 0 0 1 2.8-1.4L9 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <span>Hands</span>
+        </div>
+        <div class="multiuse-item">
+          <div class="icon-circle icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="7"/><circle cx="9.5" cy="10" r="0.8" fill="currentColor" stroke="none"/><circle cx="14.5" cy="10" r="0.8" fill="currentColor" stroke="none"/><path d="M9 14.5c1 1 5 1 6 0" stroke-linecap="round"/></svg></div>
+          <span>Faces</span>
+        </div>
+        <div class="multiuse-item">
+          <div class="icon-circle icon-clay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4.5" y="4.5" width="7" height="7" rx="1.5"/><circle cx="15.5" cy="8" r="3.5"/><path d="M6 19c0-2.8 2.5-5 6-5s6 2.2 6 5" stroke-linecap="round"/></svg></div>
+          <span>Toys</span>
+        </div>
+        <div class="multiuse-item">
+          <div class="icon-circle icon-sage"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M10 18h4" stroke-linecap="round"/></svg></div>
+          <span>On-the-go</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOUNDER NOTE ================= -->
+  <section class="founder">
+    <div class="wrap">
+      <blockquote>&ldquo;Every other bottle on the shelf shouts about germs. We wanted to make the one gentle thing you reach for a dozen times a day without a second thought &mdash; because we read the label too.&rdquo;</blockquote>
+      <cite>— The Playdate™ Founders, Divergent Brands LLC</cite>
+    </div>
+  </section>
+
+  <!-- ================= SIGNUP ================= -->
+  <section class="signup" id="signup">
+    <div class="wrap">
+      <span class="eyebrow" style="color:rgba(253,246,240,0.85);">Founding 100</span>
+      <h2 style="margin-top:8px;">Only 100 spots at $12.99.</h2>
+      <p class="signup-sub">We're inviting our first 100 customers to try Playdate™ before anyone else — at $12.99 instead of $19.99 — in exchange for your honest feedback. Drop your email below to claim a spot.</p>
+
+      <div class="spots-bar-wrap">
+        <div class="spots-label">
+          <span id="spotsClaimedLabel">62 of 100 claimed</span>
+          <span id="spotsLeftLabel">38 left</span>
+        </div>
+        <div class="spots-track"><div class="spots-fill" id="spotsFill"></div></div>
+      </div>
+
+      <div class="signup-grid">
+      <div class="signup-bottle">
+        <img src="images/bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
+      </div>
+
+      <form class="signup-form" id="signupForm" action="/contact#ContactFooter" method="post" accept-charset="UTF-8">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="founding-100,newsletter">
+
+        <div id="formFields">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input type="text" id="firstName" name="contact[first_name]" placeholder="Jessica" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="contact[email]" placeholder="you@email.com" required autocomplete="email">
+          </div>
+          <button type="submit" class="btn" id="submitBtn">Claim my founding spot</button>
+          <p class="form-fine">You're reserving the $12.99 founding price — no payment is collected today. We'll email you when checkout opens. Spots are limited to the first 100.</p>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <h3>You're on the list! 🎉</h3>
+          <p>Check your inbox — we'll send your $12.99 checkout link the moment your spot is confirmed.</p>
+        </div>
+        <div class="form-error" id="formError">
+          <p>Something went wrong — please check your email address and try again.</p>
+        </div>
+      </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section>
+    <div class="wrap">
+      <div class="story-head">
+        <span class="eyebrow">Questions</span>
+        <h2 style="margin-top:8px;">Good to know</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary>Is this a sanitizer?<span class="plus">+</span></summary>
+          <p>No. Playdate™ is a cosmetic hand &amp; surface cleanser, not a hand sanitizer or disinfectant. It's formulated to gently cleanse and wipe away dirt from hands, faces, toys, and surfaces.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What's actually in it?<span class="plus">+</span></summary>
+          <p>Three ingredients: purified water, hypochlorous acid (HOCl), and salt. It's alcohol-free, water-based, and dermatologically tested for sensitive skin.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it smell like bleach?<span class="plus">+</span></summary>
+          <p>Hypochlorous acid has a very light, faintly clean scent that's naturally part of its chemistry — it's not the harsh, overpowering bleach smell some cleaners have. Most parents describe it as barely-there.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is it safe for my child's skin?<span class="plus">+</span></summary>
+          <p>It's formulated to be gentle, alcohol-free, hypoallergenic, and dermatologically tested for sensitive skin. As with any new product, we recommend a parent supervise use and always wash with soap and water when it's available — Playdate™ is a gentle extra for when it's not.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What happens after I sign up?<span class="plus">+</span></summary>
+          <p>You'll get an email confirming your spot in the founding 100. When checkout opens, you'll receive a link to purchase your 8oz bottle at the founding price of $12.99 (regularly $19.99) in exchange for your honest feedback.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-wordmark wordmark"><span class="play">play</span><span class="date">date</span><sup>™</sup></div>
+    <div class="tag-chips">
+      <span class="tag-chip">#GENTLE</span>
+      <span class="tag-chip">#ALCOHOL-FREE</span>
+      <span class="tag-chip">#SENSITIVE-SKIN</span>
+      <span class="tag-chip">#HOCL</span>
+    </div>
+    <p class="disclaimer">Playdate™ is a cosmetic hand &amp; surface cleanser — not a hand sanitizer, disinfectant, or drug — and is not intended to diagnose, treat, cure, or prevent any disease. Always wash with soap and water; Playdate is a gentle extra for when soap and water aren't available. Keep out of reach of children; for use by an adult.<br><br>© 2026 Divergent Brands LLC · Playdate™ (registration pending).</p>
+  </div>
+</footer>
+
+<div class="sticky-cta" id="stickyCta">
+  <a href="#signup" class="btn">Claim my spot — $12.99</a>
+</div>
+
+<script>
+  // ---- Edit this number as spots fill up ----
+  var SPOTS_CLAIMED = 62;
+  var SPOTS_TOTAL = 100;
+
+  (function initSpots() {
+    var pct = Math.min(100, Math.round((SPOTS_CLAIMED / SPOTS_TOTAL) * 100));
+    var fill = document.getElementById('spotsFill');
+    var claimedLabel = document.getElementById('spotsClaimedLabel');
+    var leftLabel = document.getElementById('spotsLeftLabel');
+    if (fill) fill.style.width = pct + '%';
+    if (claimedLabel) claimedLabel.textContent = SPOTS_CLAIMED + ' of ' + SPOTS_TOTAL + ' claimed';
+    if (leftLabel) leftLabel.textContent = (SPOTS_TOTAL - SPOTS_CLAIMED) + ' left';
+  })();
+
+  // ---- Sticky mobile CTA ----
+  (function initStickyCta() {
+    var cta = document.getElementById('stickyCta');
+    var hero = document.querySelector('.hero');
+    var signup = document.getElementById('signup');
+    if (!cta || !hero) return;
+    var heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
+
+    function onScroll() {
+      var scrollY = window.scrollY;
+      var signupTop = signup ? signup.getBoundingClientRect().top + window.scrollY : Infinity;
+      var nearSignup = window.scrollY + window.innerHeight > signupTop;
+      if (scrollY > heroBottom && !nearSignup) {
+        cta.classList.add('show');
+      } else {
+        cta.classList.remove('show');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // ---- Signup form UX ----
+  (function initForm() {
+    var form = document.getElementById('signupForm');
+    var fields = document.getElementById('formFields');
+    var success = document.getElementById('formSuccess');
+    var error = document.getElementById('formError');
+    var submitBtn = document.getElementById('submitBtn');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      var email = document.getElementById('email');
+      var firstName = document.getElementById('firstName');
+
+      if (!firstName.value.trim() || !email.value.trim() || !email.checkValidity()) {
+        e.preventDefault();
+        error.classList.add('show');
+        return;
+      }
+
+      error.classList.remove('show');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Reserving your spot…';
+
+      // On a real Shopify page, this form submits normally to /contact and the
+      // browser navigates there. This local success-state guard only matters
+      // when previewing the file outside of Shopify (no /contact endpoint to
+      // hit), so it never blocks the real submission.
+      if (!/myshopify\.com|\.shopify\.com/.test(window.location.hostname) && window.location.protocol === 'file:') {
+        e.preventDefault();
+        setTimeout(function () {
+          fields.style.display = 'none';
+          success.classList.add('show');
+        }, 500);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
