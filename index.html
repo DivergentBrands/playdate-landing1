@@ -194,13 +194,25 @@
   }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 40px 0 56px; background: var(--cream); }
+  .hero { padding: 18px 0 40px; background: var(--cream); }
   .hero-grid {
     display: grid;
-    gap: 32px;
+    gap: 20px;
   }
   @media (min-width: 900px) {
-    .hero-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; }
+    .hero { padding: 40px 0 56px; }
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "badge art"
+        "copy  art";
+      column-gap: 48px;
+      row-gap: 0;
+      align-items: center;
+    }
+    .badge     { grid-area: badge; justify-self: start; align-self: end; }
+    .hero-copy { grid-area: copy; }
+    .hero-art  { grid-area: art; align-self: center; }
   }
   .badge {
     display: inline-block;
@@ -296,7 +308,41 @@
   .hero-art .ph { aspect-ratio: 4/5; min-height: 0; }
   .hero-art img { width: 100%; border-radius: var(--radius-card); box-shadow: var(--shadow-soft); aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; }
   @media (min-width: 900px) {
-    .hero-art img, .hero-art .ph { aspect-ratio: 4/5; }
+    .hero-art img, .hero-art .ph { aspect-ratio: 4/5; height: auto; max-height: none; }
+  }
+
+  /* ---------- Hero: mobile-only tweaks ---------- */
+  @media (max-width: 899px) {
+    /* 1. logo flush-left: cancel the SVG's baked-in left whitespace */
+    .wordmark { margin-left: -47px; }
+
+    /* 2. badge on one line, smaller pill */
+    .badge {
+      justify-self: start;
+      font-size: clamp(0.55rem, 2.7vw, 0.72rem);
+      letter-spacing: 0.03em;
+      padding: 8px 16px;
+      white-space: nowrap;
+      max-width: 100%;
+      margin-bottom: 14px;
+    }
+
+    /* 3 + 4. photo above headline, height-capped so h1 stays above the fold */
+    .hero-art { margin-bottom: 18px; }
+    .hero-art img {
+      aspect-ratio: auto;
+      height: 40vh;
+      max-height: 340px;
+      min-height: 240px;
+      object-position: center 35%;
+    }
+
+    /* 5. founding-price box: centered + clean */
+    .offer-box { text-align: center; }
+    .offer-row { justify-content: center; gap: 6px 12px; margin-bottom: 8px; }
+    .offer-row::after { content: ""; flex-basis: 100%; height: 0; order: 1; }
+    .offer-row .price-tag { order: 2; margin-top: 2px; }
+    .offer-box p { margin: 0 auto; }
   }
 
   /* ---------- Statement band ---------- */
@@ -677,8 +723,13 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
+        <span class="badge">Hypochlorous Acid Spray for Baby &amp; Kids</span>
+
+        <div class="hero-art">
+          <img src="images/hero.jpg" alt="A parent laughing with their toddler outdoors, misting Playdate hand cleanser onto the child's hands." loading="eager" fetchpriority="high">
+        </div>
+
         <div class="hero-copy">
-          <span class="badge">Hypochlorous Acid Spray for Baby &amp; Kids</span>
           <h1>For moms who read <span class="accent">the ingredient label.</span></h1>
           <p class="hero-sub">Three simple ingredients. Nothing to sting, nothing to decode. Playdate is a gentle, water-based hand cleanser made for the softest skin - and the parents who check every label first.</p>
 
@@ -705,10 +756,6 @@
             <a href="#signup" class="btn btn-block" id="heroCta">Claim My Founding Spot</a>
           </form>
           <div class="guarantee-line">No payment today. We will email you when checkout opens.</div>
-        </div>
-
-        <div class="hero-art">
-          <img src="images/hero.jpg" alt="A parent laughing with their toddler outdoors, misting Playdate hand cleanser onto the child's hands." loading="eager" fetchpriority="high">
         </div>
       </div>
     </div>
