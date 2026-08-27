@@ -321,20 +321,26 @@
 
   /* ---------- Science section ---------- */
   .science { background: var(--sand); padding: 44px 0; }
-  .science .gallery-head { margin-bottom: 0; }
+  .science .gallery-head { margin-bottom: 8px; }
   .science-intro { max-width: 600px; margin: 0 auto; text-align: center; color: var(--ink-soft); }
-  .science-diagram-img { max-width: 620px; width: 100%; margin: -24px auto -16px; display: block; }
+  .science-diagram {
+    max-width: 620px;
+    margin: 0 auto;
+    overflow: hidden;
+    aspect-ratio: 640 / 195;
+  }
+  .science-diagram-img { width: 100%; display: block; transform: translateY(-23%); }
   .science-checks {
     list-style: none;
     margin: 0 auto;
     padding: 0;
-    max-width: 560px;
+    width: fit-content;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 12px 32px;
+    gap: 12px 44px;
   }
   @media (min-width: 620px) {
-    .science-checks { grid-template-columns: 1fr 1fr; }
+    .science-checks { grid-template-columns: auto auto; }
   }
   .science-checks li {
     display: flex;
@@ -709,7 +715,9 @@
         <p class="science-intro">Simple ingredients, a gentle clean, and a name that stops sounding scary the moment you understand it.</p>
       </div>
 
-      <img src="images/what is hypochlorous acid.png" alt="Diagram: salt and water combine through electrolysis to form hypochlorous acid, the basis of Playdate" class="science-diagram-img" loading="lazy">
+      <div class="science-diagram">
+        <img src="images/what is hypochlorous acid.png" alt="Diagram: salt and water combine through electrolysis to form hypochlorous acid, the basis of Playdate" class="science-diagram-img" loading="lazy">
+      </div>
 
       <ul class="science-checks">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</li>
