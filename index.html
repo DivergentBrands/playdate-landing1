@@ -330,27 +330,43 @@
     aspect-ratio: 640 / 185;
   }
   .science-diagram-img { width: 100%; display: block; transform: translateY(-24.5%); }
-  .science-checks {
-    list-style: none;
-    margin: 0 auto;
-    padding: 0;
-    width: fit-content;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px 44px;
+  .science-marquee {
+    margin-top: 32px;
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+    padding: 10px 0;
   }
-  @media (min-width: 620px) {
-    .science-checks { grid-template-columns: auto auto; }
-  }
-  .science-checks li {
+  .science-marquee-track {
     display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--ink);
+    width: max-content;
+    animation: science-marquee 34s linear infinite;
   }
-  .science-checks li svg { width: 20px; height: 20px; color: var(--sage-deep); flex-shrink: 0; margin-top: 2px; }
+  .science-marquee:hover .science-marquee-track { animation-play-state: paused; }
+  .mq-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 30px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  .mq-item svg { width: 15px; height: 15px; color: var(--sage); flex-shrink: 0; }
+  @keyframes science-marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .science-marquee-track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+    .mq-item { padding: 6px 18px; }
+  }
 
   /* ---------- Mouthing reassurance callout ---------- */
   .mouth-callout {
@@ -718,14 +734,31 @@
       <div class="science-diagram">
         <img src="images/what is hypochlorous acid.png" alt="Diagram: salt and water combine through electrolysis to form hypochlorous acid, the basis of Playdate" class="science-diagram-img" loading="lazy">
       </div>
-
-      <ul class="science-checks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for 100+ years</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol-free &amp; pH-friendly</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>No residue, no rinsing</li>
-      </ul>
     </div>
+
+    <div class="science-marquee" aria-hidden="true">
+      <div class="science-marquee-track">
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for 100+ years</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol-free &amp; pH-friendly</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>No residue, no rinsing</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for 100+ years</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol-free &amp; pH-friendly</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>No residue, no rinsing</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for 100+ years</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol-free &amp; pH-friendly</span>
+        <span class="mq-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>No residue, no rinsing</span>
+      </div>
+    </div>
+
+    <ul class="visually-hidden">
+      <li>Your body already makes it</li>
+      <li>Trusted for 100+ years</li>
+      <li>Alcohol-free and pH-friendly</li>
+      <li>No residue, no rinsing</li>
+    </ul>
   </section>
 
   <!-- ================= GALLERY ================= -->
