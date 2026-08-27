@@ -301,7 +301,8 @@
 
   /* ---------- Statement band ---------- */
   .statement { text-align: center; padding: 52px 0; }
-  .statement h2 { font-size: clamp(1.5rem, 3.6vw, 2.1rem); max-width: 22ch; margin: 0 auto; }
+  .statement h2 { font-size: clamp(0.95rem, 4.3vw, 2.1rem); margin: 0 auto; }
+  .nowrap { white-space: nowrap; }
 
   /* ---------- Gallery ---------- */
   .gallery { background: var(--cream); }
@@ -315,6 +316,42 @@
     .gallery-grid { grid-template-columns: repeat(4, 1fr); }
   }
   .gallery-grid .ph { aspect-ratio: 1/1; min-height: 0; }
+  .gallery-caption { text-align: center; max-width: 52ch; margin: 24px auto 0; color: var(--ink-soft); font-size: 0.95rem; }
+  .gallery-note { text-align: center; max-width: 52ch; margin: 10px auto 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- Science section ---------- */
+  .science { background: var(--sand); }
+  .science-intro { max-width: 640px; margin: 0 auto 36px; text-align: center; color: var(--ink-soft); }
+  .science-diagram-img { max-width: 640px; width: 100%; margin: 0 auto 40px; display: block; }
+  .science-checks {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 620px;
+    display: grid;
+    gap: 16px;
+  }
+  .science-checks li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .science-checks li svg { width: 20px; height: 20px; color: var(--sage-deep); flex-shrink: 0; margin-top: 2px; }
+  .science-closing { text-align: center; max-width: 52ch; margin: 32px auto 0; color: var(--ink-soft); font-size: 0.95rem; font-style: italic; }
+
+  /* ---------- Mouthing reassurance callout ---------- */
+  .mouth-callout {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: var(--radius-card);
+    padding: 18px 22px;
+    margin-top: 24px;
+    font-size: 0.92rem;
+    color: var(--white);
+  }
 
   /* ---------- Problem / fix alternating blocks ---------- */
   .split {
@@ -329,6 +366,7 @@
   }
   .split-media .ph { aspect-ratio: 4/3; min-height: 0; }
   .split-media img { width: 100%; border-radius: var(--radius-card); box-shadow: var(--shadow-card); }
+  .split-media img.bottle-shot { width: auto; max-width: 100%; max-height: 380px; margin: 0 auto; display: block; }
   .split-copy h2 { font-size: clamp(1.5rem, 3.2vw, 2rem); }
   .split-copy p { color: var(--ink-soft); font-size: 1rem; }
   .split-copy .btn { margin-top: 6px; }
@@ -651,10 +689,32 @@
   <!-- ================= STATEMENT BAND ================= -->
   <section class="statement">
     <div class="wrap">
-      <h2>Nature's gentlest clean. <span class="accent-sage">None of the harsh chemicals.</span></h2>
+      <h2>Nature's gentlest clean.<br><span class="accent-sage nowrap">None of the harsh chemicals.</span></h2>
     </div>
     <div class="btn-row">
       <a href="#signup" class="btn">Claim My Founding Spot</a>
+    </div>
+  </section>
+
+  <!-- ================= SCIENCE ================= -->
+  <section class="science">
+    <div class="wrap">
+      <div class="gallery-head">
+        <span class="eyebrow">The science, simply</span>
+        <h2>So, what is hypochlorous acid?</h2>
+      </div>
+      <p class="science-intro">It sounds like a chemistry lesson, but hypochlorous acid (HOCl) is one of the simplest, gentlest cleansers there is. It is made from just three things found in nature: purified water, a pinch of salt, and a tiny electric charge. No harsh solvents, no synthetic fragrance, nothing you would need to look up.</p>
+
+      <img src="images/what is hypochlorous acid.png" alt="Diagram: salt and water combine through electrolysis to form hypochlorous acid, the basis of Playdate" class="science-diagram-img" loading="lazy">
+
+      <ul class="science-checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already knows it and makes it</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for over a century in wound care, eye care, and food handling</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Gentle by nature: alcohol-free, fragrance-free, and pH-friendly</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Nothing left behind: no residue, no rinsing, nothing lingering</li>
+      </ul>
+
+      <p class="science-closing">Simple ingredients, a gentle clean, and a name that stops sounding scary the moment you understand it.</p>
     </div>
   </section>
 
@@ -671,6 +731,8 @@
         <div class="ph"><span>Photo: wiping a high chair tray</span></div>
         <div class="ph"><span>Photo: bottle in a diaper bag</span></div>
       </div>
+      <p class="gallery-caption">Built to travel: a leak-resistant cap that will not soak your wipes, sealed and freshness-dated so it arrives ready to use.</p>
+      <p class="gallery-note">For daycare drop-off, the playground, the grocery cart, and every sticky moment in between.</p>
       <div class="btn-row">
         <a href="#signup" class="btn">Claim My Founding Spot</a>
       </div>
@@ -737,12 +799,12 @@
     <div class="wrap">
       <div class="split reverse">
         <div class="split-media">
-          <img src="images/playdate-8oz-bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" loading="lazy">
+          <img src="images/playdate-8oz-bottle.jpg" alt="Playdate 8oz hypochlorous acid spray bottle for babies and kids" class="bottle-shot" loading="lazy">
         </div>
         <div class="split-copy">
           <span class="eyebrow">Full transparency</span>
           <h2>Three ingredients. That is the whole list.</h2>
-          <p>Water, hypochlorous acid, and salt. Hypochlorous acid is the same gentle molecule your own white blood cells make to help keep you clean. There is nothing else in the bottle, and nothing to look up.</p>
+          <p>Water, hypochlorous acid, and salt. Hypochlorous acid is the same molecule your own body already makes. There is nothing else in the bottle, and nothing to look up.</p>
           <p>Read the back label in five seconds flat. That is the whole point.</p>
           <a href="#signup" class="btn">Claim My Founding Spot</a>
         </div>
@@ -779,6 +841,7 @@
               </ul>
             </div>
           </div>
+          <div class="mouth-callout">Made for the age when everything ends up in a mouth. Alcohol-free and non-toxic, so a spray before snack time is one less thing to second-guess.</div>
         </div>
       </div>
     </div>
@@ -876,6 +939,7 @@
             </div>
             <button type="submit" class="btn btn-block" id="submitBtn">Claim My Founding Spot</button>
             <p class="form-fine">You are reserving the $12.99 founding price. No payment is collected today. We will email you when checkout opens. Spots are limited to the first 100.</p>
+            <p class="form-fine">Not for you? We will refund it. No bottle to return.</p>
           </div>
 
           <div class="form-success" id="formSuccess">
@@ -909,6 +973,10 @@
         <details class="faq-item">
           <summary>Does it smell like bleach?<span class="plus">+</span></summary>
           <p>Hypochlorous acid has a very light, faintly clean scent that is naturally part of its chemistry. It is not the harsh, overpowering bleach smell some cleaners have. Most parents describe it as barely there.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How long does it last?<span class="plus">+</span></summary>
+          <p>Hypochlorous acid is freshest when it is made in small, sealed batches, which is exactly how we bottle it. Each bottle is freshness-dated, and because we pre-fill every size, including travel, you are never decanting it into another container where it can lose its gentleness. Use within the date on the bottle for the best experience.</p>
         </details>
         <details class="faq-item">
           <summary>Is it safe for my child's skin?<span class="plus">+</span></summary>
