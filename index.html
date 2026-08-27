@@ -320,27 +320,31 @@
   .gallery-note { text-align: center; max-width: 52ch; margin: 10px auto 0; color: var(--ink-soft); font-size: 0.95rem; }
 
   /* ---------- Science section ---------- */
-  .science { background: var(--sand); }
-  .science-intro { max-width: 640px; margin: 0 auto 36px; text-align: center; color: var(--ink-soft); }
-  .science-diagram-img { max-width: 640px; width: 100%; margin: 0 auto 40px; display: block; }
+  .science { background: var(--sand); padding: 44px 0; }
+  .science .gallery-head { margin-bottom: 20px; }
+  .science-intro { max-width: 600px; margin: 0 auto; text-align: center; color: var(--ink-soft); }
+  .science-diagram-img { max-width: 620px; width: 100%; margin: 0 auto 20px; display: block; }
   .science-checks {
     list-style: none;
     margin: 0 auto;
     padding: 0;
-    max-width: 620px;
+    max-width: 560px;
     display: grid;
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 12px 32px;
+  }
+  @media (min-width: 620px) {
+    .science-checks { grid-template-columns: 1fr 1fr; }
   }
   .science-checks li {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
     font-size: 1rem;
     font-weight: 700;
     color: var(--ink);
   }
   .science-checks li svg { width: 20px; height: 20px; color: var(--sage-deep); flex-shrink: 0; margin-top: 2px; }
-  .science-closing { text-align: center; max-width: 52ch; margin: 32px auto 0; color: var(--ink-soft); font-size: 0.95rem; font-style: italic; }
 
   /* ---------- Mouthing reassurance callout ---------- */
   .mouth-callout {
@@ -702,19 +706,17 @@
       <div class="gallery-head">
         <span class="eyebrow">The science, simply</span>
         <h2>So, what is hypochlorous acid?</h2>
+        <p class="science-intro">Simple ingredients, a gentle clean, and a name that stops sounding scary the moment you understand it.</p>
       </div>
-      <p class="science-intro">It sounds like a chemistry lesson, but hypochlorous acid (HOCl) is one of the simplest, gentlest cleansers there is. It is made from just three things found in nature: purified water, a pinch of salt, and a tiny electric charge. No harsh solvents, no synthetic fragrance, nothing you would need to look up.</p>
 
       <img src="images/what is hypochlorous acid.png" alt="Diagram: salt and water combine through electrolysis to form hypochlorous acid, the basis of Playdate" class="science-diagram-img" loading="lazy">
 
       <ul class="science-checks">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already knows it and makes it</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for over a century in wound care, eye care, and food handling</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Gentle by nature: alcohol-free, fragrance-free, and pH-friendly</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Nothing left behind: no residue, no rinsing, nothing lingering</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Your body already makes it</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted for 100+ years</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Alcohol-free &amp; pH-friendly</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>No residue, no rinsing</li>
       </ul>
-
-      <p class="science-closing">Simple ingredients, a gentle clean, and a name that stops sounding scary the moment you understand it.</p>
     </div>
   </section>
 
