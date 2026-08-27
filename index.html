@@ -313,15 +313,17 @@
 
   /* ---------- Hero: mobile-only tweaks ---------- */
   @media (max-width: 899px) {
-    /* 1. logo flush-left: cancel the SVG's baked-in left whitespace */
-    .wordmark { margin-left: -47px; }
+    /* 1. thinner header bar + logo flush-left (cancel the SVG's baked-in
+       left whitespace: ~0.70 * rendered height at this size) */
+    .site-header-inner { padding: 8px 20px; }
+    .wordmark { height: 48px; margin-left: -34px; }
 
-    /* 2. badge on one line, smaller pill */
+    /* 2. badge: one-line pill, centered above the photo, as large as fits */
     .badge {
-      justify-self: start;
-      font-size: clamp(0.55rem, 2.7vw, 0.72rem);
-      letter-spacing: 0.03em;
-      padding: 8px 16px;
+      justify-self: center;
+      font-size: clamp(0.58rem, 3vw, 0.8rem);
+      letter-spacing: 0.02em;
+      padding: 7px 12px;
       white-space: nowrap;
       max-width: 100%;
       margin-bottom: 14px;
